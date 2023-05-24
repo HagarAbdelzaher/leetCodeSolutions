@@ -1,24 +1,23 @@
 class Solution {
 public:
     bool isPalindrome(string s) {
-       
-        vector<char>v;
-        for(int i=0 ; i<s.size() ; i++)
-        {
-            if(isalpha(tolower(s[i])) || isdigit(s[i]))
-            {
-                v.push_back(tolower(s[i]));
+        int i = 0;
+        int j = s.size() - 1;
+        
+        while (i < j) {
+            while (!isalnum(s[i]) && i < j) {
+                i++;
             }
-                
-        }
-        int len = v.size();
-        for(int i=0 ; i<len/2 ; i++)
-        {
-            if(v[i]!=v[len-i-1])
-            {
+            while (!isalnum(s[j]) && i < j) {
+                j--;
+            }
+            if (tolower(s[i]) != tolower(s[j])) {
                 return false;
             }
+            i++;
+            j--;
         }
+        
         return true;
     }
 };
