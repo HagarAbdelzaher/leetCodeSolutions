@@ -1,17 +1,17 @@
 class Solution {
     public char findTheDifference(String s, String t) {
         
-        char tempS[] = s.toCharArray();
-        Arrays.sort(tempS);
-        
-        char tempT[] = t.toCharArray();
-        Arrays.sort(tempT);
-        for(int i=0 ; i<s.length() ; i++)
+      return (char) (getAsciiSum(t)-getAsciiSum(s));
+    }
+    
+    public int getAsciiSum (String str){
+        int sum = 0;
+        for(int i=0 ; i<str.length() ; i++)
         {
-            if(tempS[i]!= tempT[i])
-                return tempT[i];
+            sum+= str.charAt(i);
         }
         
-        return tempT[t.length()-1];
+        return sum;
+    
     }
 }
